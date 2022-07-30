@@ -1,0 +1,17 @@
+[
+    {
+      "fullname": "Đặng Văn Tỵ",
+      "tel": "0902108989",
+      "skills":"sing, dance",
+      "address":"Quảng Bình",
+      "user_id": 1
+    },
+    {
+      "fullname": "Đặng Thị Trang",
+      "tel": "0362108349",
+      "skills":"sport, cook",
+      "address":"Quảng Ngãi",
+      "user_id": 2
+    }
+  ]
+  

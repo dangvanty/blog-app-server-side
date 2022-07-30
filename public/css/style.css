@@ -1,0 +1,39 @@
+/* Resets */
+:is(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Main View */
+/* Header */
+header nav .nav-item:is(:last-child) {
+  margin-right: 0;
+}
+
+header #btn-logout:hover {
+  cursor: pointer;
+}
+
+/* Homepage View */
+/* Post card */
+.card .card-header :is(h3, p) {
+  margin-bottom: 0;
+}
+
+/* Dashboard View */
+.dashboard-post {
+  border: solid 1px #343a40;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+}
+
+.dashboard-post :is(p, small) {
+  margin: 0;
+}
+
+.dashboard-post:hover {
+  background-color: #eee;
+}

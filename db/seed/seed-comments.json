@@ -1,0 +1,12 @@
+[
+  {
+    "message": "Great blog!",
+    "user_id": 1,
+    "post_id": 1
+  },
+  {
+    "message": "Thanks for the explainer",
+    "user_id": 2,
+    "post_id": 1
+  }
+]

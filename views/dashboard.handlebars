@@ -1,0 +1,14 @@
+<section class="d-flex justify-content-between align-items-center mb-4">
+  <h3>Welcome {{username}}</h3>
+  <a href="/dashboard/new-post" class="btn btn-dark py-2">New Post</a>
+</section>
+
+<section>
+  {{#if posts.length}}
+  <h4 class="mb-2">Your Posts</h4>
+
+  {{#each posts as |post|}}
+  {{> post-dashboard-details}}
+  {{/each}}
+  {{/if}}
+</section>
