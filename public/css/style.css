@@ -37,3 +37,7 @@ header #btn-logout:hover {
 .dashboard-post:hover {
   background-color: #eee;
 }
+
+/* 404 */
+.error-actions {margin-top:15px;margin-bottom:15px;}
+.error-actions .btn { margin-right:10px; }

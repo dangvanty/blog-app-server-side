@@ -1,42 +1,60 @@
-<section class="mb-4">
-  {{> post-details}}
-</section>
-
-<section class="mb-4">
-  {{#if comments.length}}
-  <h5 class="mb-2">Comments</h5>
-
-  {{#each comments as |comment|}}
-  {{> comment-details}}
-  {{/each}}
-  {{/if}}
-</section>
-
-<div>
-  <form id="form-comment">
-    <label for="comment" class="form-label d-block m-0">
-      <h5 class="mb-2">Add Comment</h5>
-    </label>
-    <div class="card">
-      <div class="card-body">
-        {{#if logged_in}}
-        <div class="mb-3">
-          <textarea id="comment" class="form-control" rows="3"></textarea>
+<div class="row">
+  <div class="col-9">
+    <section class="mb-4">
+      {{> post-details}}
+    </section>
+  
+    <section class="mb-4">
+      {{#if comments.length}}
+      <h5 class="mb-2">Comments</h5>
+  
+      {{#each comments as |comment|}}
+      {{> comment-details}}
+      {{/each}}
+      {{/if}}
+    </section>
+  
+    <div>
+      <form id="form-comment">
+        <label for="comment" class="form-label d-block m-0">
+          <h5 class="mb-2">Add Comment</h5>
+        </label>
+        <div class="card">
+          <div class="card-body">
+            {{#if logged_in}}
+            <div class="mb-3">
+              <textarea id="comment" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-dark">Post</button>
+            </div>
+            {{else}}
+            <div class="text-center">
+              <p class="m-0">
+                <a href="/login" class="text-info">Login</a> or
+                <a href="/signup" class="text-info">Sign up</a> to post comments
+              </p>
+            </div>
+            {{/if}}
+          </div>
         </div>
-        <div class="text-center">
-          <button type="submit" class="btn btn-dark">Post</button>
-        </div>
-        {{else}}
-        <div class="text-center">
-          <p class="m-0">
-            <a href="/login" class="text-info">Login</a> or
-            <a href="/signup" class="text-info">Sign up</a> to post comments
-          </p>
-        </div>
-        {{/if}}
-      </div>
+      </form>
     </div>
-  </form>
+  </div>
+  <div class="col-3">
+    <h4 class="text-center mb-2 text-info">Author's information</h4>
+    <div class="card" style="width: 18rem;">
+    <img src="/img/user.png" class="card-img-top" alt="avatar">
+    <div class="card-body">
+      <h5 class="card-title">{{user.profile.fullname}}</h5>
+      <p class="card-text">SKILL : {{user.profile.skills}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">TEL : {{user.profile.tel}}</li>
+      <li class="list-group-item">ADDRESS : {{user.profile.address}}</li>
+    </ul>
+  </div>
+  </div>
 </div>
 
 {{#if logged_in}}

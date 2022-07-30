@@ -23,11 +23,13 @@ const getSinglePost = async(req,res)=>{
     try {
         const postData = await Post.findByPk(req.params.id,{
             include:[
-                { model: User, attributes: ["username"] },
+                { model: User, attributes: ["username"],
+            include:[{model: Profile}] },
                 {
                 model: Comment,
                 include: [{ model: User, attributes: ["username"] }],
                 },
+                
             ]
         })
         const post = postData.get({ plain: true });

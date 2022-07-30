@@ -3,3 +3,8 @@ GET http://localhost:3000/hi
 
 ### check api homepage
 GET http://localhost:3000/
+
+### check logout
+
+POST http://localhost:3000/api/users/logout
+

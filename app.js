@@ -43,10 +43,15 @@ app.use((req,res,next)=>{
     next(createError.NotFound('this route does not exit'))
 })
 app.use((err,req,res,next)=>{
-    res.json({
-        status:err.status ||500,
-        message: err.message
-    })
+    if (err.status === 404) {
+        return res.status(400).render('404');
+    }
+
+    if (err.status === 500) {
+        return res.status(500).render('500');
+    }
+
+   next();
 })
 // Sync database connection and start server
 sequelize.sync({ force: false }).then(() => {

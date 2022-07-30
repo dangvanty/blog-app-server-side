@@ -14,18 +14,18 @@ const getPostData = async () => {
 
   const postData = await response.json();
   postTitle.value = postData.title;
-  postBody.value = postData.body;
+  postBody.value = postData.content;
 };
 
 const editPostHandler = async () => {
   const title = postTitle.value.trim();
-  const body = postBody.value.trim();
+  const content = postBody.value.trim();
 
-  if (!title || !body) return alert("Provide post title and body update post");
+  if (!title || !content) return alert("Provide post title and body update post");
 
   const response = await fetch(`/api/posts/${getPostID()}`, {
     method: "PUT",
-    body: JSON.stringify({ title, body }),
+    body: JSON.stringify({ title, content }),
     headers: { "Content-Type": "application/json" },
   });
   if (!response.ok) return alert("Failed to update post");

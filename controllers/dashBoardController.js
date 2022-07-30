@@ -1,7 +1,7 @@
 const {Post,Profile,User,Comment} = require('../models')
 
 // Dashboard
-const getDashboard = async ()=>{
+const getDashboard = async (req,res)=>{
     try {
         const userData = await User.findByPk(req.session.user_id,{
             attributes:{exclude:["password",]},
