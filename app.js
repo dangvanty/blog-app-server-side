@@ -48,7 +48,7 @@ app.use((err,req,res,next)=>{
     }
 
     if (err.status === 500) {
-        return res.status(500).render('500');
+        return res.status(500).render('500'); 
     }
 
    next();
