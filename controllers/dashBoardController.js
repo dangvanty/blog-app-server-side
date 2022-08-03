@@ -9,7 +9,14 @@ const getDashboard = async (req,res)=>{
         })
 
         const user=userData.get({plain:true})
-        res.render("dashboard", { ...user, logged_in: true });
+        // kiểm tra ko có profile thì để create, hoặc có thì để edit ở views
+        let checkProfile 
+        if(user.profile){
+            checkProfile=false
+        }else{
+            checkProfile=true
+        }
+        res.render("dashboard", { ...user,checkProfile, logged_in: true });
     } catch (error) {
         res.status(500).json(error);
     }

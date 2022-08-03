@@ -3,6 +3,13 @@
   margin: 0;
 }
 
+.header-section{
+  background: url('https://web.buyatab.com/wp-content/uploads/2016/11/Blog-Banner-Buyatab.png') center ;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
 a {
   text-decoration: none;
 }

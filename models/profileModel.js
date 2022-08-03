@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require("sequelize");
+const { Model, DataTypes,Sequelize } = require("sequelize");
 const sequelize = require("../config/config");
 
 class Post extends Model {}
@@ -6,10 +6,10 @@ class Post extends Model {}
 Post.init(
   {
     id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
+      type: Sequelize.UUID,
+      defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
-      autoIncrement: true,
+      allowNull: false   
     },
     fullname: {
       type: DataTypes.STRING,
@@ -27,7 +27,7 @@ Post.init(
       type: DataTypes.TEXT,
     },
     user_id: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.UUID,
       allowNull: false,
       references: { model: "user", key: "id" },
     },

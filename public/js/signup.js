@@ -14,8 +14,8 @@ const handleFormSignup = async (event) => {
     if (response.ok) {
       document.location.replace("/"); //dashboard
     } else {
-      // const test = await response.json();
       alert(response.statusText);
+      
     }
   }
 };

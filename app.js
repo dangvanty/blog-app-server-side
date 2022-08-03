@@ -2,6 +2,7 @@ require('dotenv').config();
 const express=require('express')
 const path=require('path');
 const expHbs=require('express-handlebars');
+
 const session = require('express-session')
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const createError=require('http-errors')
@@ -26,9 +27,9 @@ const sess = {
 const hbs = expHbs.create({ helpers });
 //set up 
 app.use(session(sess));
-app.set("view engine", "handlebars");
-
-app.engine("handlebars", hbs.engine);
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,"public")));

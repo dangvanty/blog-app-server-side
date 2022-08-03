@@ -12,4 +12,21 @@ const createComment= async (req,res)=>{
     }
 }
 
-module.exports={createComment}
+// delete comment: 
+const deleteCommentById=async(req,res)=>{
+    try {
+        const commentData=await Comment.destroy({
+            where:{id:req.params.id},
+        })
+        if (!commentData) {
+            res.status(404).json({ message: `Comment does not exist to delete` });
+            return;
+          }
+          res.status(200).json(commentData);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
+
+
+module.exports={createComment,deleteCommentById}

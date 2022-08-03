@@ -11,7 +11,10 @@ const signupUser= async (req,res)=>{
             res.status(200).json(userData)
         })
     } catch (error) {
-        res.status(400).json(error);
+        res.status(400).json({
+            msg:"sign up fail",
+            
+    });
     }
 }
 

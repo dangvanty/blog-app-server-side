@@ -32,8 +32,13 @@ const getSinglePost = async(req,res)=>{
                 
             ]
         })
-        const post = postData.get({ plain: true });
-
+        let post = postData.get({ plain: true });
+        let checkDeleteComment = req.session.user_id
+        //check delete
+        post.comments.map((item)=>{
+            item.user_id===checkDeleteComment?(item.checkDelete=true):(item.checkDelete=false)
+        })
+        console.log(post.comments)
         res.render("post", { ...post, logged_in: req.session.logged_in });
         // res.json({ ...post, logged_in: req.session.logged_in }); // TESTING
     } catch (error) {

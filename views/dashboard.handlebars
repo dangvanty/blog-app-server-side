@@ -27,8 +27,63 @@
       <li class="list-group-item">ADDRESS : {{profile.address}}</li>
     </ul>
     <div class="card-body d-flex justify-content-center">
-      <a href="#" class="card-link btn btn-primary">EDIT</a>
-    </div>
-  </div>
+       {{#if checkProfile}}
+         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#profileModal">Create</button>
+        {{else}}
+         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#profileModal" id="editProfile">EDIT</button>
+        {{/if}}
+     
+    </div>  
   </div>
 </div>
+</div>
+
+ <!-- Modal -->
+    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            {{#if checkProfile}}
+            <h5 class="modal-title" id="exampleModalLabel">CREATE YOUR PROFILE</h5>
+            {{else}}
+            <h5 class="modal-title" id="exampleModalLabel">UPDATE YOUR PROFILE</h5>
+            {{/if}}
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-outline mb-4 ">
+              <label class="form-label" for="name">Full Name:</label>
+              <input type="text" id="name"  name="name"
+                  class="form-control" />
+            </div>
+            <div class="form-outline mb-4 ">
+              <label class="form-label" for="skill">Skill:</label>
+              <input type="text" id="skill"  name="skill"
+                  class="form-control" />
+            </div>
+            <div class="form-outline mb-4 ">
+              <label class="form-label" for="tel">Tel:</label>
+              <input type="text" id="tel"  name="tel"
+                  class="form-control" />
+            </div>
+            <div class="form-outline mb-4 ">
+              <label class="form-label" for="address">Address:</label>
+              <input type="text" id="address"  name="address"
+                  class="form-control" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="submitForm" >Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{{#if checkProfile}}
+<script src="/js/create-profile.js"></script>
+{{else}}
+<script src="/js/update-profile.js"></script>
+{{/if}}
