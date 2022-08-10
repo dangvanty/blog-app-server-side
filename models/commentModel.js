@@ -9,7 +9,7 @@ Comment.init(
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
-      allowNull: false
+      allowNull: false,
     },
     message: {
       type: DataTypes.STRING,

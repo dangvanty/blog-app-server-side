@@ -48,3 +48,8 @@ header #btn-logout:hover {
 /* 404 */
 .error-actions {margin-top:15px;margin-bottom:15px;}
 .error-actions .btn { margin-right:10px; }
+
+.isDisabled{
+  pointer-events: none;
+  cursor: default;
+}

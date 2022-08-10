@@ -2,7 +2,7 @@ require('dotenv').config();
 const express=require('express')
 const path=require('path');
 const expHbs=require('express-handlebars');
-
+const cons = require('consolidate')
 const session = require('express-session')
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const createError=require('http-errors')
@@ -29,6 +29,7 @@ const hbs = expHbs.create({ helpers });
 app.use(session(sess));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
@@ -41,15 +42,16 @@ app.get('/',(req,res)=>{
 })
 //catch http errors: 
 app.use((req,res,next)=>{
-    next(createError.NotFound('this route does not exit'))
+    next(createError(404))
 })
 app.use((err,req,res,next)=>{
+    
     if (err.status === 404) {
-        return res.status(400).render('404');
+        return res.status(400).render('404.handlebars');
     }
 
     if (err.status === 500) {
-        return res.status(500).render('500'); 
+        return res.status(500).render('500.handlebars'); 
     }
 
    next();

@@ -1,4 +1,4 @@
-const { Model, DataTypes,Sequelize } = require("sequelize");
+const { Model, DataTypes, Sequelize } = require("sequelize");
 const sequelize = require("../config/config");
 const bcrypt = require("bcrypt");
 
@@ -14,7 +14,7 @@ User.init(
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
-      allowNull: false
+      allowNull: false,
     },
     username: {
       type: DataTypes.STRING,
@@ -25,17 +25,17 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [8,32],
+        len: [8, 32],
       },
     },
-    role:{
-        type:DataTypes.STRING,
-        allowNull:false,
-        validate:{
-            isIn:[['user', 'admin']]
-        },
-        defaultValue:"user"
-    }
+    role: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isIn: [["user", "admin"]],
+      },
+      defaultValue: "user",
+    },
   },
   {
     hooks: {

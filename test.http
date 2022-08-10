@@ -39,7 +39,11 @@ Content-Type: application/json
 }
 
 ### check admin
-GET  {{baseURL}}/api/admin
+GET  {{baseURL}}/admin/?search=an
 
 ### delete comment: 
 DELETE {{baseURL}}/api/comments/7
+
+### check post
+
+GET  {{baseURL}}/post/145
