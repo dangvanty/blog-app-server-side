@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Into to HTML",
+    "content": "It's all about the tags.",
+    "user_id": 1
+  },
+  {
+    "title": "Intro to CSS",
+    "content": "Styles on styles on styles.",
+    "user_id": 1
+  },
+  {
+    "title": "Intro to JS",
+    "content": "Bringing functionality to the client and server.",
+    "user_id": 2
+  }
+]

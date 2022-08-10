@@ -1,0 +1,11 @@
+<div class="card mb-2">
+  <div class="card-header d-flex justify-content-between">
+    <small>Comment from {{user.username}} on {{format_date updatedAt}}</small>
+    {{#if checkDelete}}
+    <small class="btn btn-primary" id="deleteCmt" data-id="{{id}}" data-post="{{post_id}}">Delete</small>
+    {{/if}}
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{message}}</p>
+  </div>
+</div>
