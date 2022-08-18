@@ -45,7 +45,20 @@ const editProfileHandler = async () => {
 };
 
 // Event listeners
+
 document
   .getElementById("submitForm")
   .addEventListener("click", editProfileHandler);
 
+  const deleteUserHandler = async () => {
+    const response = await fetch(`/api/profiles/`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+    if (!response.ok) return alert("Failed to delete account");
+  
+    document.location.replace("/login");
+  };
+  document
+  .querySelector("#btn-delete")
+  .addEventListener("click", deleteUserHandler);

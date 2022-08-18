@@ -72,7 +72,7 @@ const showListUsers = async (req, res) => {
     offset: pageNumber * sizeNumber,
     paranoid: false,
     subQuery: false,
-  });
+  })
 
   let queryObject = {
     page: pageNumber + 1,
@@ -80,6 +80,7 @@ const showListUsers = async (req, res) => {
     sort,
     search,
   };
+
   let newlist = JSON.parse(JSON.stringify(listUser));
   res.render("admin.ejs", {
     data: { ...newlist, queryObject },
@@ -87,4 +88,105 @@ const showListUsers = async (req, res) => {
   });
 };
 
-module.exports = { showListUsers };
+const createUser = async (req, res) => {
+  try {
+    const {username, password, fullname, tel, skill, address, role} = req.body;
+
+    await User.create({
+      username:username,
+      password:password,
+      role:role
+    })
+    const userEnd = await User.findOne({order:[['created_at','DESC']], limit:1})
+    await Profile.create({
+      fullname:fullname,
+      tel:tel,
+      address:address,
+      skills:skill,
+      user_id:userEnd.id
+    })
+    res.status(200).json({
+      success: true,
+      
+    })
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      error
+    })
+  }
+};
+
+const deleteUser = async (req, res) => {
+  try {
+    const {id} = req.params;
+  await User.destroy({
+    where: {
+      id: id,
+    },
+    force: true
+  })
+  res.status(200).json({
+    success:true
+  });
+  } catch (error) {
+    res.status(400).json({
+      success:false,
+      error
+    })
+  }
+};
+
+const editUser = async (req, res) => {
+  try{const { id } = req.params
+  const userEdit = await User.findOne({
+    where: { id: id },
+    include:[{ model: Profile },]
+
+  })
+  console.log(userEdit)
+  res.status(200).json(
+    {
+      success: true,
+      userEdit
+    });
+  }
+    catch(error){
+      res.status(400).json(
+        {
+          success: false,
+          error
+        });
+    }
+
+}
+
+
+const updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const {username, fullname, tel, skill, address, role} = req.body;
+ 
+  await User.update({
+    username:username,
+    role:role
+  },  { where: { id: id } }
+  )
+  await Profile.update({
+    fullname:fullname,
+    tel:tel,
+    address:address,
+    skills:skill,
+  },{where:{user_id:id}})
+
+  res.status(200).json({ success: true })
+  } catch (error) {
+    res.status(400).json( {
+      success: false,
+      error
+    })
+  }
+ 
+}
+
+module.exports = { showListUsers, createUser,deleteUser,editUser,updateUser };

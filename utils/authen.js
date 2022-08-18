@@ -1,3 +1,4 @@
+const createHttpError = require('http-errors');
 const {User} =require('../models')
 exports.checkAuth = (req, res, next) => {
     // If the user is not logged in, redirect the request to the login route
@@ -12,9 +13,9 @@ exports.authorizeRoles=(...role)=>{
         const user= await User.findOne({where:{id: req.session.user_id}})
         const userdata = user.get({plain:true})
         if(!role.includes(userdata.role)){
-            return res.render('404')
+           return res.render('404.handlebars')
         }
-        next();
+        next()
     }
 }
     

@@ -6,6 +6,7 @@ const homePage = async (req, res) => {
   try {
     const postData = await Post.findAll({
       include: [{ model: User, attributes: ["username"] }],
+      order:[['updated_at','DESC']]
     });
     const posts = postData.map((post) =>
       post.get({
@@ -53,7 +54,6 @@ const getSinglePost = async (req, res, next) => {
         ? (item.checkDelete = true)
         : (item.checkDelete = false);
     });
-
     res.render("post.handlebars", {
       ...post,
       logged_in: req.session.logged_in,

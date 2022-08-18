@@ -1,4 +1,4 @@
-const { Profile } = require("../models");
+const { Profile,User } = require("../models");
 
 //add Profile
 const createProfile = async (req, res) => {
@@ -45,4 +45,23 @@ const updateProfileById = async (req, res) => {
   }
 };
 
-module.exports = { createProfile, getProfileById, updateProfileById };
+const disableUser = async (req, res) => {
+  try {
+  await User.destroy({
+    where: {
+      id:req.session.user_id
+    },
+    force: false
+  })
+  res.status(200).json({
+    success:true
+  });
+  } catch (error) {
+    res.status(400).json({
+      success:false,
+      error
+    })
+  }
+};
+
+module.exports = { createProfile, getProfileById, updateProfileById,disableUser };
