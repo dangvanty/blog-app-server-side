@@ -58,4 +58,4 @@ const logoutUser = (req, res) => {
   });
 };
 
-module.exports = { signupUser, loginUser, logoutUser };
+module.exports = { signupUser, loginUser, logoutUser};

@@ -19,7 +19,7 @@ POST {{baseURL}}/api/users/login
 Content-Type: application/json
 
 {
-  "username":"ty123",
+  "username":"ty1234",
   "password":"12345678"
 }
 ### check post profile
@@ -44,6 +44,42 @@ GET  {{baseURL}}/admin/?search=an
 ### delete comment: 
 DELETE {{baseURL}}/api/comments/7
 
+
 ### check post
 
 GET  {{baseURL}}/post/145
+
+### delet
+DELETE   {{baseURL}}/api/profiles
+### post  create user
+
+POST {{baseURL}}/admin/users/create
+Content-Type: application/json
+
+{
+  "username":"dangvan17",
+  "password":"12345678",
+  "role":"user",
+  "fullname":"Nguyễn Ngọc Anh2",
+  "tel":"0980880801",
+  "skill":"code",
+  "address":"Phú Lộc"
+}
+
+### get user by id from admin : 
+GET {{baseURL}}/admin/users/1
+
+### update user by id from admin : 
+
+PUT {{baseURL}}/admin/users/1
+Content-Type: application/json
+
+{
+  "username":"qwerd",
+  "password":"12345678",
+  "role":"user",
+  "fullname":"Nguyễn Ngọc Anh2",
+  "tel":"0980880801",
+  "skill":"code",
+  "address":"Phú Lộc"
+}

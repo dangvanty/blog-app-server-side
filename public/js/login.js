@@ -14,7 +14,7 @@ const handleFormLogin = async (event) => {
     if (response.ok) {
       document.location.replace("/"); //dashboard
     } else {
-      alert(response.statusText);
+      alert('Login fail!');
     }
   }
 };
